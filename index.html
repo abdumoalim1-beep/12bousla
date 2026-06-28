@@ -52,9 +52,7 @@
       position: relative; min-height: 90vh;
       display: flex; align-items: center; overflow: hidden; padding: 30px 0 60px;
     }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-img {
       position: absolute; top: 0; bottom: 0; left: 0; width: 66%;
       background: url(assets/hero-visual.png) center right/cover no-repeat;
@@ -98,7 +96,7 @@
       font-size: clamp(40px,5.4vw,76px);
       line-height: 1.08; letter-spacing: -.01em;
     }
-    .hero-h1 .underline { border-bottom: 4px solid var(--accent, #fff); padding-bottom: 4px; }
+    .hero-h1 .underline { border-bottom: 4px solid #fff; padding-bottom: 4px; }
     .hero-p {
       margin: 30px 0 0; color: #9a9a9a;
       font-size: clamp(15px,1.25vw,18px); line-height: 1.9; font-weight: 300; max-width: 500px;
@@ -175,7 +173,6 @@
       display: grid; grid-template-columns: 1fr auto 1fr;
       align-items: center; gap: clamp(18px,3vw,46px); direction: ltr;
     }
-    /* Right: services list */
     #busla-jright { direction: rtl; text-align: right; }
     .j-services-label { font-size: 13px; letter-spacing: .18em; color: #8A8A8A; margin-bottom: 26px; }
     .j-services-list { display: flex; flex-direction: column; gap: 22px; }
@@ -189,7 +186,6 @@
     .j-service-text h4 { margin: 0 0 5px; font-size: 16px; font-weight: 600; }
     .j-service-text p { margin: 0; color: #8A8A8A; font-size: 12.5px; line-height: 1.7; font-weight: 300; }
 
-    /* Center: compass */
     .compass-wrap {
       position: relative;
       width: clamp(300px,33vw,440px); height: clamp(300px,33vw,440px);
@@ -226,7 +222,6 @@
       filter: drop-shadow(0 30px 54px rgba(0,0,0,.75));
     }
 
-    /* Left: stage text */
     #busla-jleft { direction: rtl; text-align: right; }
     .j-stage-num {
       font-family: 'Space Grotesk';
@@ -280,30 +275,6 @@
     .section-header { text-align: center; margin-bottom: 50px; }
     .section-header h2 { margin: 0; font-size: clamp(28px,3.4vw,50px); font-weight: 700; }
 
-    /* SERVICES */
-    .services-grid {
-      direction: rtl; display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: clamp(14px,1.6vw,22px);
-    }
-    .service-card {
-      background: linear-gradient(180deg,#101010,#0a0a0a);
-      border: 1px solid rgba(255,255,255,.07); border-radius: 18px;
-      padding: 24px 22px 28px;
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-      min-height: 200px; transition: .3s;
-    }
-    .service-card:hover { border-color: rgba(255,255,255,.2); background: linear-gradient(180deg,#161616,#0c0c0c); }
-    .service-card-num { width: 100%; font-family: 'Space Grotesk'; font-size: 13px; color: #5f5f5f; text-align: left; direction: ltr; }
-    .service-card-icon {
-      width: 46px; height: 46px; border-radius: 12px;
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
-      display: flex; align-items: center; justify-content: center;
-      margin: 16px 0 20px; color: #fff;
-    }
-    .service-card h3 { margin: 0 0 10px; font-size: 18px; font-weight: 600; }
-    .service-card p { margin: 0; color: #8A8A8A; font-size: 13px; line-height: 1.7; font-weight: 300; }
-
     /* JOURNEY STEPS */
     .journey-steps-header { text-align: center; margin-bottom: 60px; }
     .journey-steps-wrap { position: relative; direction: rtl; }
@@ -352,12 +323,17 @@
     }
     .work-card:hover { border-color: rgba(255,255,255,.22); }
     .work-thumb {
+      height: 210px; background: #0a0a0a; overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .work-thumb-placeholder {
       height: 210px;
       background-image: repeating-linear-gradient(135deg, #121212 0, #121212 11px, #0b0b0b 11px, #0b0b0b 22px);
       display: flex; align-items: center; justify-content: center;
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .work-thumb span { font-family: 'Space Grotesk'; font-size: 11px; letter-spacing: .3em; color: #3f3f3f; }
+    .work-thumb-placeholder span { font-family: 'Space Grotesk'; font-size: 11px; letter-spacing: .3em; color: #3f3f3f; }
     .work-card-body { padding: 24px 24px 26px; text-align: right; }
     .work-tag {
       display: inline-block; font-size: 11.5px; color: #8A8A8A;
@@ -367,6 +343,75 @@
     .work-card-body h3 { margin: 0 0 12px; font-size: 22px; font-weight: 600; }
     .work-card-body p { margin: 0 0 22px; color: #8A8A8A; font-size: 13.5px; line-height: 1.75; font-weight: 300; }
     .work-link { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 14px; }
+
+    /* BLOG */
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .blog-card {
+      cursor: pointer; border: 1px solid rgba(255,255,255,.08); border-radius: 18px;
+      overflow: hidden; background: #000; display: flex; flex-direction: column; transition: .3s;
+    }
+    .blog-card:hover { border-color: rgba(255,255,255,.22); transform: translateY(-4px); }
+    .blog-thumb {
+      height: 190px;
+      background: linear-gradient(135deg,#161616,#0b0b0b);
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,.06); color: #2f2f2f;
+    }
+    .blog-body { padding: 26px 24px 28px; text-align: right; display: flex; flex-direction: column; flex: 1; }
+    .blog-meta {
+      display: flex; align-items: center; gap: 10px; justify-content: flex-end;
+      margin-bottom: 14px; font-size: 12px; color: #8A8A8A;
+    }
+    .blog-meta .dot { color: #444; }
+    .blog-meta .read-time { font-family: 'Space Grotesk'; }
+    .blog-card h3 { margin: 0 0 12px; font-size: 20px; font-weight: 600; line-height: 1.4; }
+    .blog-card p { margin: 0; color: #8A8A8A; font-size: 13.5px; line-height: 1.8; font-weight: 300; }
+
+    /* ARTICLE MODAL */
+    #article-modal {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.72); backdrop-filter: blur(8px);
+      align-items: flex-start; justify-content: center;
+      overflow-y: auto; padding: clamp(20px,5vh,70px) clamp(16px,4vw,40px);
+    }
+    #article-modal.open { display: flex; }
+    .modal-inner {
+      position: relative; width: 100%; max-width: 760px;
+      background: #0b0b0b; border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      direction: rtl;
+    }
+    .modal-hero {
+      position: relative; height: clamp(180px,28vw,260px);
+      background: url(assets/cta-bg.png) center/cover no-repeat;
+    }
+    .modal-hero-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(11,11,11,.2), #0b0b0b);
+    }
+    .modal-close {
+      position: absolute; top: 18px; left: 18px;
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.4);
+      color: #fff; cursor: pointer; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; transition: .25s;
+    }
+    .modal-close:hover { background: #fff; color: #000; }
+    .modal-body {
+      padding: clamp(28px,4vw,46px) clamp(24px,4vw,52px) clamp(36px,5vw,56px);
+      margin-top: -60px; position: relative;
+    }
+    .modal-meta {
+      display: flex; align-items: center; gap: 10px;
+      justify-content: flex-start; margin-bottom: 18px; font-size: 12.5px; color: #8A8A8A;
+    }
+    .modal-meta .cat {
+      border: 1px solid rgba(255,255,255,.16); border-radius: 30px; padding: 5px 13px;
+    }
+    .modal-meta .read { font-family: 'Space Grotesk'; }
+    .modal-title { margin: 0 0 24px; font-size: clamp(26px,3.4vw,40px); font-weight: 700; line-height: 1.25; }
+    .modal-content { display: flex; flex-direction: column; gap: 20px; color: #b4b4b4; font-size: 15.5px; line-height: 2; font-weight: 300; }
+    .modal-content p { margin: 0; }
 
     /* STATS */
     .stats-section {
@@ -387,20 +432,11 @@
     #contact-section {
       position: relative; overflow: hidden; border-radius: 30px;
       border: 1px solid rgba(255,255,255,.07);
-      background: radial-gradient(120% 130% at 50% 0%, #101010, #050505 60%);
+      background: #050505;
       padding: clamp(70px,9vw,120px) clamp(24px,4vw,56px); text-align: center;
     }
-    .cta-ring1, .cta-ring2 {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      border-radius: 50%; border: 1px solid rgba(255,255,255,.05);
-    }
-    .cta-ring1 { width: 760px; height: 760px; }
-    .cta-ring2 { width: 540px; height: 540px; }
-    .cta-glow {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 760px; height: 760px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.05), transparent 60%);
-    }
+    .cta-bg-img { position: absolute; inset: 0; background: url(assets/cta-bg.png) center/cover no-repeat; }
+    .cta-bg-grad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,5,5,.4), rgba(5,5,5,.78)); }
     .cta-content { position: relative; }
     .cta-content h2 { margin: 0; font-size: clamp(34px,4.6vw,62px); font-weight: 700; line-height: 1.12; }
     .cta-content p { margin: 22px auto 38px; max-width: 480px; color: #9a9a9a; font-size: 16px; line-height: 1.85; font-weight: 300; }
@@ -422,14 +458,6 @@
     }
     .footer-about img { height: 24px; width: auto; margin-bottom: 20px; display: block; }
     .footer-about p { margin: 0 0 22px; color: #8A8A8A; font-size: 14.5px; line-height: 1.85; font-weight: 300; max-width: 240px; }
-    .footer-socials { display: flex; gap: 12px; }
-    .footer-social {
-      width: 38px; height: 38px; border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      color: #bdbdbd; font-family: 'Space Grotesk'; font-size: 13px; transition: .25s;
-    }
-    .footer-social:hover { background: #fff; color: #000; border-color: #fff; }
     .footer-col-title { font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: .2em; color: #5f5f5f; margin-bottom: 18px; }
     .footer-links { display: flex; flex-direction: column; gap: 13px; font-size: 14.5px; }
     .footer-links a { color: #bdbdbd; transition: color .2s; }
@@ -470,14 +498,14 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .blog-grid { grid-template-columns: repeat(2,1fr); }
       .journey-steps { grid-template-columns: repeat(3,1fr); }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .hero-content { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .services-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
       .journey-steps { grid-template-columns: repeat(2,1fr); }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -496,9 +524,9 @@
     <a href="#top"><img src="assets/busla-logo-white.png" alt="BUSLA" style="height:25px;width:auto;display:block;"></a>
     <div class="nav-links">
       <a href="#top" style="color:#fff;">الرئيسية</a>
-      <a href="#services">خدماتنا</a>
+      <a href="#journey-scroll">خدماتنا</a>
       <a href="#work">أعمالنا</a>
-      <a href="#journey-steps">المدونة</a>
+      <a href="#blog">المدونة</a>
       <a href="#contact-section">تواصل معنا</a>
     </div>
     <a href="#contact-section" class="nav-cta">
@@ -560,17 +588,13 @@
     <div class="journey-grad"></div>
     <div class="journey-glow"></div>
 
-    <div class="journey-pager" id="journey-pager">
-      <!-- filled by JS -->
-    </div>
+    <div class="journey-pager" id="journey-pager"></div>
 
     <div class="journey-grid">
       <!-- RIGHT: services -->
       <div id="busla-jright">
-        <div class="j-services-label">رحلتك معنا</div>
-        <div class="j-services-list" id="j-services-list">
-          <!-- filled by JS -->
-        </div>
+        <div class="j-services-label">خدماتنا</div>
+        <div class="j-services-list" id="j-services-list"></div>
       </div>
 
       <!-- CENTER: compass -->
@@ -593,7 +617,7 @@
         <div class="j-stage-num" id="j-num"></div>
         <h2 class="j-stage-title" id="j-title"></h2>
         <p class="j-stage-desc" id="j-desc"></p>
-        <a href="#services" class="btn-outline">
+        <a href="#work" class="btn-outline">
           <span>اكتشف المرحلة</span><span class="arr">↗</span>
         </a>
       </div>
@@ -609,17 +633,6 @@
 <!-- ============ MAIN STACK ============ -->
 <main id="main-stack">
 
-  <!-- SERVICES -->
-  <section id="services" class="card-section">
-    <div class="section-header" data-reveal>
-      <div class="section-label">ما نقدمه</div>
-      <h2>كل ما يحتاجه مشروعك في مكان واحد.</h2>
-    </div>
-    <div class="services-grid" id="services-grid">
-      <!-- filled by JS -->
-    </div>
-  </section>
-
   <!-- JOURNEY STEPS -->
   <section id="journey-steps" class="card-section">
     <div class="journey-steps-header section-header" data-reveal>
@@ -628,18 +641,13 @@
     </div>
     <div class="journey-steps-wrap" data-reveal>
       <div class="journey-steps-line"></div>
-      <div class="journey-steps" id="journey-steps-grid">
-        <!-- filled by JS -->
-      </div>
+      <div class="journey-steps" id="journey-steps-grid"></div>
     </div>
   </section>
 
   <!-- WORK -->
   <section id="work" class="card-section">
     <div class="work-header" data-reveal>
-      <a href="#work" class="btn-outline" style="order:2;">
-        <span class="arr">↗</span><span>عرض كل المشاريع</span>
-      </a>
       <div style="order:1;">
         <div class="section-label">أعمالنا</div>
         <h2 style="margin:0;font-size:clamp(28px,3.4vw,50px);font-weight:700;">أفكار تحولت إلى مشاريع تنمو.</h2>
@@ -648,24 +656,113 @@
     <div class="work-carousel-wrap">
       <button class="carousel-btn" id="work-prev">←</button>
       <div id="busla-work-scroll">
-        <!-- filled by JS -->
+        <div class="work-card" data-reveal>
+          <div class="work-thumb"><img src="assets/work-1.png" alt="TIRE-AI" onerror="this.parentElement.innerHTML='<div class=work-thumb-placeholder><span>TIRE-AI</span></div>';this.parentElement.className='';"></div>
+          <div class="work-card-body">
+            <span class="work-tag">جهاز ذكي</span>
+            <h3>TIRE - AI</h3>
+            <p>نظام ذكي لمراقبة الإجهاد والحرارة وتوازن الأحمال لحظيًا بواجهة HUD.</p>
+            <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-thumb"><img src="assets/work-2.png" alt="SceneDNA" onerror="this.parentElement.innerHTML='<div class=work-thumb-placeholder><span>SceneDNA</span></div>';this.parentElement.className='';"></div>
+          <div class="work-card-body">
+            <span class="work-tag">نظام ذكي</span>
+            <h3>SceneDNA</h3>
+            <p>نظام ذكي لأتمتة عملية التحرير في قطاع السينما ورفع كفاءة الإنتاج السينمائي.</p>
+            <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-thumb"><img src="assets/work-3.png" alt="WSEAL" onerror="this.parentElement.innerHTML='<div class=work-thumb-placeholder><span>WSEAL</span></div>';this.parentElement.className='';"></div>
+          <div class="work-card-body">
+            <span class="work-tag">سوار طبي</span>
+            <h3>WSEAL</h3>
+            <p>سوار ذكي يراقب الإشارات الحيوية ويتنبأ بنوبة الصرع قبل حدوثها باستخدام الذكاء الاصطناعي.</p>
+            <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-thumb"><img src="assets/work-4.png" alt="مراس" onerror="this.parentElement.innerHTML='<div class=work-thumb-placeholder><span>مراس</span></div>';this.parentElement.className='';"></div>
+          <div class="work-card-body">
+            <span class="work-tag">تطبيق جوال</span>
+            <h3>مراس</h3>
+            <p>منصة ذكاء اصطناعي لإنشاء محتوى صوتي مخصص بسرعة وسهولة.</p>
+            <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-thumb"><img src="assets/work-5.png" alt="رهوة" onerror="this.parentElement.innerHTML='<div class=work-thumb-placeholder><span>رهوة</span></div>';this.parentElement.className='';"></div>
+          <div class="work-card-body">
+            <span class="work-tag">منصة تقنية</span>
+            <h3>رهوة</h3>
+            <p>منصة ذكية لتحويل الأفكار إلى تصاميم معمارية جاهزة للتنفيذ خلال دقائق.</p>
+            <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
+          </div>
+        </div>
       </div>
       <button class="carousel-btn" id="work-next">→</button>
     </div>
   </section>
 
+  <!-- BLOG -->
+  <section id="blog" class="card-section">
+    <div class="work-header" data-reveal>
+      <div style="order:1;">
+        <div class="section-label">المدونة</div>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,50px);font-weight:700;">أفكار ومقالات لرواد الأعمال.</h2>
+      </div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card" data-reveal onclick="openArticle(0)">
+        <div class="blog-thumb">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M11 19a8 8 0 100-16 8 8 0 000 16z"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="read-time">٥ دقائق قراءة</span><span class="dot">•</span><span>استراتيجية</span>
+          </div>
+          <h3>كيف تتحقق من فكرة مشروعك قبل أن تبني أي شيء</h3>
+          <p>خطوات عملية لاختبار الطلب الحقيقي على فكرتك دون إنفاق ميزانية كبيرة.</p>
+        </div>
+      </div>
+      <div class="blog-card" data-reveal onclick="openArticle(1)">
+        <div class="blog-thumb">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3a6 6 0 00-4 10.5c.6.6 1 1.5 1 2.5h6c0-1 .4-1.9 1-2.5A6 6 0 0012 3z"/><path d="M9 18h6"/><path d="M10 21h4"/></svg>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="read-time">٧ دقائق قراءة</span><span class="dot">•</span><span>هوية</span>
+          </div>
+          <h3>العلامة التجارية ليست شعارًا فقط: كيف تبني حضورًا يبقى</h3>
+          <p>ما الذي يجعل علامة تجارية لا تُنسى، وكيف تبدأ من اليوم الأول بشكل صحيح.</p>
+        </div>
+      </div>
+      <div class="blog-card" data-reveal onclick="openArticle(2)">
+        <div class="blog-thumb">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="read-time">٦ دقائق قراءة</span><span class="dot">•</span><span>نمو</span>
+          </div>
+          <h3>الأنظمة التي تجعل مشروعك ينمو دون أن تحترق</h3>
+          <p>كيف تبني أنظمة تشغيلية وأتمتة تتيح لك التوسع بثبات وكفاءة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- STATS -->
   <section class="stats-section">
-    <div class="stats-grid" id="stats-grid">
-      <!-- filled by JS -->
-    </div>
+    <div class="stats-grid" id="stats-grid"></div>
   </section>
 
   <!-- CTA -->
   <section id="contact-section">
-    <div class="cta-ring1"></div>
-    <div class="cta-ring2"></div>
-    <div class="cta-glow"></div>
+    <div class="cta-bg-img"></div>
+    <div class="cta-bg-grad"></div>
     <div class="cta-content" data-reveal>
       <h2>جاهز تبدأ مشروعك؟</h2>
       <p>احجز جلسة تعريفية مجانية ونرسم معًا الطريق الصحيح لفكرتك.</p>
@@ -683,36 +780,25 @@
     <div class="footer-about">
       <img src="assets/busla-logo-white.png" alt="BUSLA">
       <p>شريك في بناء مشروع قابل للنمو.</p>
-      <div class="footer-socials">
-        <a href="#" class="footer-social">X</a>
-        <a href="#" class="footer-social">in</a>
-        <a href="#" class="footer-social">IG</a>
-        <a href="#" class="footer-social">YT</a>
-      </div>
     </div>
     <div>
       <div class="footer-col-title">استكشف</div>
       <div class="footer-links">
         <a href="#top">الرئيسية</a>
-        <a href="#">من نحن</a>
-        <a href="#services">خدماتنا</a>
+        <a href="#journey-scroll">خدماتنا</a>
         <a href="#work">أعمالنا</a>
-        <a href="#journey-steps">المدونة</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">الموارد</div>
       <div class="footer-links">
-        <a href="#">المدونة</a>
-        <a href="#">المقالات</a>
-        <a href="#">الأسئلة الشائعة</a>
+        <a href="#blog">المدونة</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">تواصل معنا</div>
       <div class="footer-contact">
-        <div class="footer-contact-item"><span class="ico">✉</span><span>info@busla.com</span></div>
-        <div class="footer-contact-item"><span class="ico">✆</span><span>+966 55 123 4567</span></div>
+        <div class="footer-contact-item"><span class="ico">✆</span><span>+966 56 248 6279</span></div>
         <div class="footer-contact-item"><span class="ico">⚲</span><span style="font-family:inherit;direction:rtl;">السعودية</span></div>
       </div>
     </div>
@@ -734,6 +820,24 @@
     </div>
   </div>
 </footer>
+
+<!-- ================= ARTICLE MODAL ================= -->
+<div id="article-modal" onclick="closeArticle(event)">
+  <div class="modal-inner" onclick="event.stopPropagation()">
+    <div class="modal-hero">
+      <div class="modal-hero-grad"></div>
+      <button class="modal-close" onclick="closeArticle()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">
+        <span class="cat" id="modal-cat"></span>
+        <span class="read" id="modal-read"></span>
+      </div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ---- SVG icon helper ----
@@ -797,17 +901,6 @@ const JSTAGES = [
   ]},
 ];
 
-const SERVICES = [
-  { num:'01', title:'دراسة السوق',        desc:'تحليل السوق، المنافسين، والفرص.',                          icon:'chartBar' },
-  { num:'02', title:'تحديد العملاء',      desc:'فهم العميل المثالي، وبناء شخصيات دقيقة.',                 icon:'people' },
-  { num:'03', title:'استراتيجية المشروع', desc:'نموذج العمل، الخطة، وأولويات المنتج.',                   icon:'bulb' },
-  { num:'04', title:'الهوية والعلامة',    desc:'تصميم الهوية وبناء هوية احترافية تعبّر عنك.',            icon:'pen' },
-  { num:'05', title:'المواقع والتطبيقات', desc:'تصميم وتطوير مواقع وتطبيقات حديثة وسريعة.',              icon:'code' },
-  { num:'06', title:'MVP',               desc:'تنفيذ المنتج الأولي بشكل سريع وفعّال.',                   icon:'cube' },
-  { num:'07', title:'الأنظمة والتشغيل',  desc:'بناء الأنظمة، الأتمتة، وسير العمل.',                     icon:'gear' },
-  { num:'08', title:'خدمات خاصة',        desc:'حلول مخصصة حسب احتياج مشروعك.',                         icon:'chartUp' },
-];
-
 const JOURNEY_STEPS = [
   { num:'01', title:'استكشاف الفكرة',  desc:'نفهم فكرتك وأهدافك، ونحدد التحدي الحقيقي.',      icon:'search' },
   { num:'02', title:'تحليل وتحقق',    desc:'بحث السوق، المنافسين، والفرص الحقيقية.',           icon:'chartUp' },
@@ -817,13 +910,6 @@ const JOURNEY_STEPS = [
   { num:'06', title:'النمو والتطوير',   desc:'نرافقك للنمو، التحسين، والتوسع.',                 icon:'chartBar' },
 ];
 
-const WORK = [
-  { name:'سري',  tag:'تطبيق', desc:'تطبيق لإدارة الحجوزات وإدارة المواعيد الذكية.',        shot:'APP UI' },
-  { name:'نمو',  tag:'منصة',  desc:'منصة تعليمية تفاعلية لإدارة الدورات والمدربين.',       shot:'DASHBOARD' },
-  { name:'أفنن', tag:'تطبيق', desc:'تطبيق لطلب خدمات الصيانة المنزلية.',                   shot:'APP UI' },
-  { name:'مداد', tag:'منصة',  desc:'منصة لإدارة المحتوى والفرق والمهام.',                   shot:'DASHBOARD' },
-];
-
 const STATS = [
   { value:'50+',  label:'مشروع تم تنفيذه',          icon:'briefcase' },
   { value:'8+',   label:'قطاعات مختلفة',             icon:'building' },
@@ -831,18 +917,28 @@ const STATS = [
   { value:'100%', label:'حلول مصممة حسب احتياجك',    icon:'star' },
 ];
 
-// ---- RENDER ----
-function renderServices() {
-  document.getElementById('services-grid').innerHTML = SERVICES.map(s => `
-    <div class="service-card" data-reveal>
-      <div class="service-card-num">${s.num}</div>
-      <div class="service-card-icon">${ic(s.icon, 22)}</div>
-      <h3>${s.title}</h3>
-      <p>${s.desc}</p>
-    </div>
-  `).join('');
-}
+const ARTICLES = [
+  { cat: 'استراتيجية', read: '٥ دقائق قراءة', title: 'كيف تتحقق من فكرة مشروعك قبل أن تبني أي شيء', body: [
+    'كثير من رواد الأعمال يبدؤون ببناء المنتج فورًا، ثم يكتشفون متأخرًا أن لا أحد يحتاجه فعلًا. التحقق من الفكرة هو الخطوة التي توفّر عليك الوقت والمال قبل أن تستثمر فيهما.',
+    'ابدأ بتحديد المشكلة التي تحلّها بوضوح، ثم تحدّث مع عملاء حقيقيين من فئتك المستهدفة. اسأل عن سلوكهم الحالي وكيف يتعاملون مع المشكلة اليوم، لا عن رأيهم في فكرتك فقط.',
+    'اختبر الطلب بأقل تكلفة ممكنة: صفحة هبوط بسيطة، نموذج تسجيل مبكر، أو حتى محادثات مباشرة. إشارات الاهتمام الحقيقية (دفع، تسجيل، إحالة) أقوى من أي إعجاب مجاملة.',
+    'في بوصلة نبدأ كل مشروع بمرحلة تحقق منهجية، لأن أفضل قرار قد تتخذه أحيانًا هو تعديل الفكرة قبل أن تكلّفك كثيرًا.',
+  ]},
+  { cat: 'هوية', read: '٧ دقائق قراءة', title: 'العلامة التجارية ليست شعارًا فقط: كيف تبني حضورًا يبقى', body: [
+    'يظن البعض أن العلامة التجارية تعني الشعار والألوان فقط، لكنها في الحقيقة الانطباع الكامل الذي يتركه مشروعك في ذهن العميل عبر كل نقطة تواصل.',
+    'تبدأ الهوية القوية من وضوح الرسالة: من أنت، ولمن تتحدث، ولماذا أنت مختلف. هذا الأساس هو ما يوجّه لاحقًا كل قرار بصري ولفظي.',
+    'الاتساق هو ما يصنع الحضور. حين تتكرر نفس النبرة ونفس اللغة البصرية في كل مكان، يبدأ العميل بالتعرّف عليك والثقة بك تلقائيًا.',
+    'استثمر في بناء هوية متكاملة من اليوم الأول بدل ترقيعها لاحقًا. الهوية الواضحة ليست تجميلًا، بل أصل من أصول النمو.',
+  ]},
+  { cat: 'نمو', read: '٦ دقائق قراءة', title: 'الأنظمة التي تجعل مشروعك ينمو دون أن تحترق', body: [
+    'النمو بلا أنظمة يعني فوضى متزايدة: مهام تضيع، عملاء ينتظرون، وفريق يعمل بلا توقف دون نتيجة واضحة. الأنظمة هي ما يحوّل الجهد إلى نمو مستدام.',
+    'ابدأ بتوثيق العمليات المتكررة في مشروعك، ثم أتمت ما يمكن أتمتته. كل مهمة يدوية متكررة هي فرصة لتوفير وقت يمكن توجيهه للنمو.',
+    'الأنظمة الجيدة تجعل المشروع أقل اعتمادًا عليك شخصيًا، وهذا بالضبط ما يتيح لك التوسع دون أن تكون أنت عنق الزجاجة.',
+    'في بوصلة نبني الأنظمة التشغيلية كجزء أساسي من المشروع، لأن المشاريع التي تنمو بثبات هي التي بُنيت لتعمل بكفاءة من الداخل.',
+  ]},
+];
 
+// ---- RENDER ----
 function renderJourneySteps() {
   document.getElementById('journey-steps-grid').innerHTML = JOURNEY_STEPS.map(j => `
     <div class="journey-step">
@@ -850,20 +946,6 @@ function renderJourneySteps() {
       <div class="step-num">${j.num}</div>
       <div class="step-title">${j.title}</div>
       <p class="step-desc">${j.desc}</p>
-    </div>
-  `).join('');
-}
-
-function renderWork() {
-  document.getElementById('busla-work-scroll').innerHTML = WORK.map(w => `
-    <div class="work-card" data-reveal>
-      <div class="work-thumb"><span>${w.shot}</span></div>
-      <div class="work-card-body">
-        <span class="work-tag">${w.tag}</span>
-        <h3>${w.name}</h3>
-        <p>${w.desc}</p>
-        <a href="#contact-section" class="work-link"><span>عرض المشروع</span><span class="arr">←</span></a>
-      </div>
     </div>
   `).join('');
 }
@@ -880,6 +962,28 @@ function renderStats() {
   `).join('');
 }
 
+// ---- ARTICLE MODAL ----
+function openArticle(i) {
+  const a = ARTICLES[i];
+  document.getElementById('modal-cat').textContent = a.cat;
+  document.getElementById('modal-read').textContent = a.read;
+  document.getElementById('modal-title').textContent = a.title;
+  document.getElementById('modal-content').innerHTML = a.body.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('article-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle(e) {
+  if (e && e.target !== document.getElementById('article-modal') && !e.currentTarget.classList.contains('modal-close')) return;
+  document.getElementById('article-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelector('.modal-close').addEventListener('click', function() {
+  document.getElementById('article-modal').classList.remove('open');
+  document.body.style.overflow = '';
+});
+
 // ---- JOURNEY SCROLL ----
 let jstage = -1;
 
@@ -888,7 +992,6 @@ function renderJourneyStage(stage) {
   jstage = stage;
   const s = JSTAGES[stage];
 
-  // pager
   document.getElementById('journey-pager').innerHTML = JSTAGES.map((p, i) => `
     <div class="j-pager-item ${i === stage ? 'active' : ''}">
       <span class="j-pager-dot"></span>
@@ -896,7 +999,6 @@ function renderJourneyStage(stage) {
     </div>
   `).join('');
 
-  // services
   const list = document.getElementById('j-services-list');
   list.innerHTML = s.services.map(sv => `
     <div class="j-service-item">
@@ -909,18 +1011,15 @@ function renderJourneyStage(stage) {
   `).join('');
   list.style.animation = 'none'; void list.offsetWidth; list.style.animation = 'busla-fade .5s ease';
 
-  // left text
   document.getElementById('j-num').textContent = s.num;
   const jleft = document.getElementById('busla-jleft');
   document.getElementById('j-title').textContent = s.title;
   document.getElementById('j-desc').textContent = s.desc;
   jleft.style.animation = 'none'; void jleft.offsetWidth; jleft.style.animation = 'busla-fade .5s ease';
 
-  // needle
   const needle = document.getElementById('busla-needle');
   if (needle) needle.style.transform = `rotate(${stage * 90}deg)`;
 
-  // bg parallax
   const bg = document.getElementById('busla-jbg');
   if (bg) {
     const dx = [-3, 3, 3, -3][stage] || 0;
@@ -975,9 +1074,7 @@ function initCarousel() {
 }
 
 // ---- BOOT ----
-renderServices();
 renderJourneySteps();
-renderWork();
 renderStats();
 renderJourneyStage(0);
 initReveal();
