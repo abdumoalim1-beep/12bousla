@@ -714,44 +714,7 @@
         <h2 style="margin:0;font-size:clamp(28px,3.4vw,50px);font-weight:700;">أفكار ومقالات لرواد الأعمال.</h2>
       </div>
     </div>
-    <div class="blog-grid">
-      <div class="blog-card" data-reveal onclick="openArticle(0)">
-        <div class="blog-thumb">
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M11 19a8 8 0 100-16 8 8 0 000 16z"/><path d="M21 21l-4.3-4.3"/></svg>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span class="read-time">٥ دقائق قراءة</span><span class="dot">•</span><span>استراتيجية</span>
-          </div>
-          <h3>كيف تتحقق من فكرة مشروعك قبل أن تبني أي شيء</h3>
-          <p>خطوات عملية لاختبار الطلب الحقيقي على فكرتك دون إنفاق ميزانية كبيرة.</p>
-        </div>
-      </div>
-      <div class="blog-card" data-reveal onclick="openArticle(1)">
-        <div class="blog-thumb">
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3a6 6 0 00-4 10.5c.6.6 1 1.5 1 2.5h6c0-1 .4-1.9 1-2.5A6 6 0 0012 3z"/><path d="M9 18h6"/><path d="M10 21h4"/></svg>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span class="read-time">٧ دقائق قراءة</span><span class="dot">•</span><span>هوية</span>
-          </div>
-          <h3>العلامة التجارية ليست شعارًا فقط: كيف تبني حضورًا يبقى</h3>
-          <p>ما الذي يجعل علامة تجارية لا تُنسى، وكيف تبدأ من اليوم الأول بشكل صحيح.</p>
-        </div>
-      </div>
-      <div class="blog-card" data-reveal onclick="openArticle(2)">
-        <div class="blog-thumb">
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
-        </div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span class="read-time">٦ دقائق قراءة</span><span class="dot">•</span><span>نمو</span>
-          </div>
-          <h3>الأنظمة التي تجعل مشروعك ينمو دون أن تحترق</h3>
-          <p>كيف تبني أنظمة تشغيلية وأتمتة تتيح لك التوسع بثبات وكفاءة.</p>
-        </div>
-      </div>
-    </div>
+    <div class="blog-grid" id="blog-grid"></div>
   </section>
 
   <!-- STATS -->
@@ -824,13 +787,14 @@
 <!-- ================= ARTICLE MODAL ================= -->
 <div id="article-modal" onclick="closeArticle(event)">
   <div class="modal-inner" onclick="event.stopPropagation()">
-    <div class="modal-hero">
+    <div class="modal-hero" id="modal-hero">
       <div class="modal-hero-grad"></div>
       <button class="modal-close" onclick="closeArticle()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-meta">
-        <span class="cat" id="modal-cat"></span>
+        <span class="cat" id="modal-cat1"></span>
+        <span class="cat" id="modal-cat2"></span>
         <span class="read" id="modal-read"></span>
       </div>
       <h2 class="modal-title" id="modal-title"></h2>
@@ -917,26 +881,30 @@ const STATS = [
   { value:'100%', label:'حلول مصممة حسب احتياجك',    icon:'star' },
 ];
 
-const ARTICLES = [
-  { cat: 'استراتيجية', read: '٥ دقائق قراءة', title: 'كيف تتحقق من فكرة مشروعك قبل أن تبني أي شيء', body: [
-    'كثير من رواد الأعمال يبدؤون ببناء المنتج فورًا، ثم يكتشفون متأخرًا أن لا أحد يحتاجه فعلًا. التحقق من الفكرة هو الخطوة التي توفّر عليك الوقت والمال قبل أن تستثمر فيهما.',
-    'ابدأ بتحديد المشكلة التي تحلّها بوضوح، ثم تحدّث مع عملاء حقيقيين من فئتك المستهدفة. اسأل عن سلوكهم الحالي وكيف يتعاملون مع المشكلة اليوم، لا عن رأيهم في فكرتك فقط.',
-    'اختبر الطلب بأقل تكلفة ممكنة: صفحة هبوط بسيطة، نموذج تسجيل مبكر، أو حتى محادثات مباشرة. إشارات الاهتمام الحقيقية (دفع، تسجيل، إحالة) أقوى من أي إعجاب مجاملة.',
-    'في بوصلة نبدأ كل مشروع بمرحلة تحقق منهجية، لأن أفضل قرار قد تتخذه أحيانًا هو تعديل الفكرة قبل أن تكلّفك كثيرًا.',
-  ]},
-  { cat: 'هوية', read: '٧ دقائق قراءة', title: 'العلامة التجارية ليست شعارًا فقط: كيف تبني حضورًا يبقى', body: [
-    'يظن البعض أن العلامة التجارية تعني الشعار والألوان فقط، لكنها في الحقيقة الانطباع الكامل الذي يتركه مشروعك في ذهن العميل عبر كل نقطة تواصل.',
-    'تبدأ الهوية القوية من وضوح الرسالة: من أنت، ولمن تتحدث، ولماذا أنت مختلف. هذا الأساس هو ما يوجّه لاحقًا كل قرار بصري ولفظي.',
-    'الاتساق هو ما يصنع الحضور. حين تتكرر نفس النبرة ونفس اللغة البصرية في كل مكان، يبدأ العميل بالتعرّف عليك والثقة بك تلقائيًا.',
-    'استثمر في بناء هوية متكاملة من اليوم الأول بدل ترقيعها لاحقًا. الهوية الواضحة ليست تجميلًا، بل أصل من أصول النمو.',
-  ]},
-  { cat: 'نمو', read: '٦ دقائق قراءة', title: 'الأنظمة التي تجعل مشروعك ينمو دون أن تحترق', body: [
-    'النمو بلا أنظمة يعني فوضى متزايدة: مهام تضيع، عملاء ينتظرون، وفريق يعمل بلا توقف دون نتيجة واضحة. الأنظمة هي ما يحوّل الجهد إلى نمو مستدام.',
-    'ابدأ بتوثيق العمليات المتكررة في مشروعك، ثم أتمت ما يمكن أتمتته. كل مهمة يدوية متكررة هي فرصة لتوفير وقت يمكن توجيهه للنمو.',
-    'الأنظمة الجيدة تجعل المشروع أقل اعتمادًا عليك شخصيًا، وهذا بالضبط ما يتيح لك التوسع دون أن تكون أنت عنق الزجاجة.',
-    'في بوصلة نبني الأنظمة التشغيلية كجزء أساسي من المشروع، لأن المشاريع التي تنمو بثبات هي التي بُنيت لتعمل بكفاءة من الداخل.',
-  ]},
-];
+let ARTICLES = [];
+
+function renderBlogGrid() {
+  document.getElementById('blog-grid').innerHTML = ARTICLES.map((a, i) => `
+    <div class="blog-card" data-reveal onclick="openArticle(${i})">
+      <div class="blog-thumb" style="${a.cardImage ? `background:url('${a.cardImage}') center/cover;` : ''}">
+        ${a.cardImage ? '' : `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 3a6 6 0 00-4 10.5c.6.6 1 1.5 1 2.5h6c0-1 .4-1.9 1-2.5A6 6 0 0012 3z"/><path d="M9 18h6"/><path d="M10 21h4"/></svg>`}
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="read-time">${a.read}</span><span class="dot">•</span><span>${a.cat1}</span>${a.cat2 ? `<span class="dot">·</span><span>${a.cat2}</span>` : ''}
+        </div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+fetch('articles.json')
+  .then(r => r.json())
+  .then(data => { ARTICLES = data; renderBlogGrid(); })
+  .catch(() => { ARTICLES = []; });
 
 // ---- RENDER ----
 function renderJourneySteps() {
@@ -965,10 +933,16 @@ function renderStats() {
 // ---- ARTICLE MODAL ----
 function openArticle(i) {
   const a = ARTICLES[i];
-  document.getElementById('modal-cat').textContent = a.cat;
+  document.getElementById('modal-cat1').textContent = a.cat1;
+  document.getElementById('modal-cat2').textContent = a.cat2 || '';
+  document.getElementById('modal-cat2').style.display = a.cat2 ? '' : 'none';
   document.getElementById('modal-read').textContent = a.read;
   document.getElementById('modal-title').textContent = a.title;
   document.getElementById('modal-content').innerHTML = a.body.map(p => `<p>${p}</p>`).join('');
+  const hero = document.getElementById('modal-hero');
+  hero.style.backgroundImage = a.headerImage ? `url('${a.headerImage}')` : '';
+  hero.style.backgroundSize = 'cover';
+  hero.style.backgroundPosition = 'center';
   document.getElementById('article-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
